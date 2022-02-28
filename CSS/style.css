@@ -1,0 +1,12 @@
+body{
+    background-color: #e8e8e8;
+    
+}
+
+#male-player{
+    display: none;
+}
+
+#female-player{
+    display: none;
+}
