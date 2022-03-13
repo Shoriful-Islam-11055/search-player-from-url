@@ -1,5 +1,14 @@
+const searchBtn = document.getElementById("button-addon2");
+const inputField = document.getElementById('searchArea');
+
+//Trigger a button click with JavaScript on the Enter key in a text box
+inputField.addEventListener("keypress", function(event) {
+    if (event.key == 'Enter')
+    searchBtn.click();
+});
+
+
 const searchPlayer = () =>{
-    const inputField = document.getElementById('searchArea');
     const Playername = inputField.value;
     // console.log(url);
     inputField.value = '';
@@ -18,6 +27,7 @@ const searchPlayer = () =>{
 }
 
 //Show all searching player 
+// const makeDiv = document.createElement('div');
 const displayplayer = players => {
     const playerCardField = document.getElementById('players-card');
     playerCardField.textContent = '';
@@ -27,20 +37,21 @@ const displayplayer = players => {
         const makeDiv = document.createElement('div');
         makeDiv.classList.add('col-lg-6','col-md-12','col-12');
         makeDiv.innerHTML = `
-            <div class="card h-100">
+            <div class="card h-100" id = "single-card">
             <img src="${singlePlayer.strThumb}" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">${singlePlayer.strPlayer}</h5>
                     <p class="card-text">${singlePlayer.strDescriptionEN.slice(0, 120)}..</p>
                 </div>
                 <div class="card-footer d-flex justify-content-around">
-                    <a onclick = "playerDelete(${singlePlayer.idPlayer}) href="#" class="btn btn-danger me-2">Delete</a>
+                    <a onclick = "playerDelete(${singlePlayer}) href="#" class="btn btn-danger me-2">Delete</a>
                     <a onclick = "playerDetails(${singlePlayer.idPlayer})" href="#" class="btn btn-primary ms-2">Details</a>
                 </div>
             </div> `
         playerCardField.appendChild(makeDiv);
     }
 }
+
 
 //show Single player deatails info using there ID
 const playerDetails = playerId =>{
